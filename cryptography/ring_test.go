@@ -1,8 +1,9 @@
-package ring
+package cryptography
 
 import (
 	"crypto/ecdsa"
 	"crypto/rand"
+	"fmt"
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
@@ -307,4 +308,59 @@ func TestLinkabilityFalse(t *testing.T) {
 	} else {
 		t.Error("linkable? true")
 	}
+}
+
+func TestVote(t *testing.T) {
+	imageMap := make(map[string]string)
+	priv1, _ := crypto.GenerateKey()
+	priv2, _ := crypto.GenerateKey()
+	priv3, _ := crypto.GenerateKey()
+	priv4, _ := crypto.GenerateKey()
+
+	ring, err := GenNewKeyRing(1, priv1, 0)
+	if err != nil {
+		t.Error(err)
+	}
+
+	ring, err = GenKeyRing(ring, priv2, 1)
+	if err != nil {
+		t.Error(err)
+	}
+
+	ring, err = GenKeyRing(ring, priv3, 2)
+	if err != nil {
+		t.Error(err)
+	}
+
+	ring, err = GenKeyRing(ring, priv4, 3)
+	if err != nil {
+		t.Error(err)
+	}
+
+	msg := "helloworld"
+	msgHash := sha3.Sum256([]byte(msg))
+
+	sig1, err := Sign(msgHash, ring, priv2, 1)
+	if err != nil {
+		fmt.Println("签名失败")
+	}
+
+	imageMap[sig1.I.X.String()] = sig1.I.Y.String()
+
+	sig2, err := Sign(msgHash, ring, priv2, 1)
+	if err != nil {
+		fmt.Println("签名失败")
+	}
+
+	if v, ok := imageMap[sig2.I.X.String()]; ok && v == sig2.I.Y.String() {
+		fmt.Println("存在")
+	} else {
+		fmt.Println("不存在")
+	}
+
+	link := Link(sig1, sig2)
+
+	fmt.Println(Verify(sig1))
+	fmt.Println(Verify(sig2))
+	fmt.Println(link)
 }

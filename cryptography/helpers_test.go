@@ -1,4 +1,4 @@
-package ring
+package cryptography
 
 import (
 	"io/ioutil"

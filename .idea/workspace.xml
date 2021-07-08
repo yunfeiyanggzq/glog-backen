@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9654207a-27f1-4bb9-bb69-6d2ab5c8581b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/close_vote.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cryptography/aes.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cryptography/aes_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cryptography/ecdsa.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cryptography/ecdsa_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cryptography/message.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vote/topic.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vote/topic_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vote/voter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/cryptography/helpers_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ring.go" beforeDir="false" afterPath="$PROJECT_DIR$/cryptography/ring.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ring_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/cryptography/ring_test.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="/usr/local/Cellar/go@1.14/1.14.15/libexec" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1ujx3zYrd3Bz8ZFiMg3wrCfkNL3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/ci" />
+      <recent name="$PROJECT_DIR$/vote" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/vote" />
+      <recent name="$PROJECT_DIR$/ring_signature" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Build.go build check_file.go">
+    <configuration name="go build check_file.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ring-go" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/ci/check_file.go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/noot/ring-go/ci" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ring-go" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/ci/check_file.go" />
+      <package value="github.com/noot/ring-go/ci" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestVoteFromFile in github.com/noot/ring-go/vote" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="ring-go" />
+      <working_directory value="$PROJECT_DIR$/vote" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/noot/ring-go/vote" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestVoteFromFile\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test cryptography" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="ring-go" />
+      <working_directory value="$PROJECT_DIR$/cryptography" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/cryptography" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test vote" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="ring-go" />
+      <working_directory value="$PROJECT_DIR$/vote" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/vote" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build check_file.go" />
+        <item itemvalue="Go Build.go build github.com/noot/ring-go/ci" />
+        <item itemvalue="Go Test.TestVoteFromFile in github.com/noot/ring-go/vote" />
+        <item itemvalue="Go Test.go test vote" />
+        <item itemvalue="Go Test.go test cryptography" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="639" y="369" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1625668492012">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="639" y="369" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1792.1120@0.0.1792.1120" timestamp="1625668492012" />
+    <state width="1750" height="285" key="GridCell.Tab.0.bottom" timestamp="1625668160170">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="1750" height="285" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1625668160170" />
+    <state width="1750" height="457" key="GridCell.Tab.0.bottom/0.23.1792.1031@0.23.1792.1031" timestamp="1625665042652" />
+    <state width="1750" height="186" key="GridCell.Tab.0.bottom/0.23.1792.1033@0.23.1792.1033" timestamp="1625665239400" />
+    <state width="1750" height="285" key="GridCell.Tab.0.center" timestamp="1625668160168">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="1750" height="285" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1625668160168" />
+    <state width="1750" height="457" key="GridCell.Tab.0.center/0.23.1792.1031@0.23.1792.1031" timestamp="1625665042651" />
+    <state width="1750" height="186" key="GridCell.Tab.0.center/0.23.1792.1033@0.23.1792.1033" timestamp="1625665239399" />
+    <state width="1750" height="285" key="GridCell.Tab.0.left" timestamp="1625668160167">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="1750" height="285" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1625668160167" />
+    <state width="1750" height="457" key="GridCell.Tab.0.left/0.23.1792.1031@0.23.1792.1031" timestamp="1625665042651" />
+    <state width="1750" height="186" key="GridCell.Tab.0.left/0.23.1792.1033@0.23.1792.1033" timestamp="1625665239394" />
+    <state width="1750" height="285" key="GridCell.Tab.0.right" timestamp="1625668160169">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="1750" height="285" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1625668160169" />
+    <state width="1750" height="457" key="GridCell.Tab.0.right/0.23.1792.1031@0.23.1792.1031" timestamp="1625665042652" />
+    <state width="1750" height="186" key="GridCell.Tab.0.right/0.23.1792.1033@0.23.1792.1033" timestamp="1625665239400" />
+    <state width="1750" height="388" key="GridCell.Tab.1.bottom" timestamp="1625237405084">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="1750" height="388" key="GridCell.Tab.1.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1625237405084" />
+    <state width="1750" height="388" key="GridCell.Tab.1.center" timestamp="1625237405083">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="1750" height="388" key="GridCell.Tab.1.center/0.0.1792.1120@0.0.1792.1120" timestamp="1625237405083" />
+    <state width="1750" height="388" key="GridCell.Tab.1.left" timestamp="1625237405083">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="1750" height="388" key="GridCell.Tab.1.left/0.0.1792.1120@0.0.1792.1120" timestamp="1625237405083" />
+    <state width="1750" height="388" key="GridCell.Tab.1.right" timestamp="1625237405084">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="1750" height="388" key="GridCell.Tab.1.right/0.0.1792.1120@0.0.1792.1120" timestamp="1625237405084" />
+    <state x="594" y="315" width="604" height="490" key="find.popup" timestamp="1625374633638">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="594" y="315" width="604" height="490" key="find.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1625374633638" />
+    <state x="561" y="251" width="670" height="676" key="search.everywhere.popup" timestamp="1625226759487">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="561" y="251" width="670" height="676" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1625226759487" />
+    <state x="626" y="479" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1625381678165">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="626" y="479" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1625381678165" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/cryptography/ring.go</url>
+          <line>245</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

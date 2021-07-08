@@ -1,4 +1,4 @@
-package ring
+package cryptography
 
 import (
 	"bytes"
@@ -151,12 +151,51 @@ func GenKeyRing(ring []*ecdsa.PublicKey, privkey *ecdsa.PrivateKey, s int) ([]*e
 	return new_ring, nil
 }
 
+func GenKeyRingWithPublicKey(ring []*ecdsa.PublicKey, pubkey *ecdsa.PublicKey, s int) ([]*ecdsa.PublicKey, error) {
+	size := len(ring) + 1
+	new_ring := make([]*ecdsa.PublicKey, size)
+
+	if s > len(ring) {
+		return nil, errors.New("index s out of bounds")
+	}
+
+	new_ring[s] = pubkey
+	for i := 1; i < size; i++ {
+		idx := (i + s) % size
+		new_ring[idx] = ring[i-1]
+	}
+
+	return new_ring, nil
+}
+
 // creates a ring with size specified by `size` and places the public key corresponding to `privkey` in index s of the ring
 // returns a new key ring of type []*ecdsa.PublicKey
 func GenNewKeyRing(size int, privkey *ecdsa.PrivateKey, s int) ([]*ecdsa.PublicKey, error) {
 	ring := make([]*ecdsa.PublicKey, size)
 	pubkey := privkey.Public().(*ecdsa.PublicKey)
 
+	if s > len(ring) {
+		return nil, errors.New("index s out of bounds")
+	}
+
+	ring[s] = pubkey
+
+	for i := 1; i < size; i++ {
+		idx := (i + s) % size
+		priv, err := crypto.GenerateKey()
+		if err != nil {
+			return nil, err
+		}
+
+		pub := priv.Public()
+		ring[idx] = pub.(*ecdsa.PublicKey)
+	}
+
+	return ring, nil
+}
+
+func GenNewKeyRingWithPublicKey(size int, pubkey *ecdsa.PublicKey, s int) ([]*ecdsa.PublicKey, error) {
+	ring := make([]*ecdsa.PublicKey, size)
 	if s > len(ring) {
 		return nil, errors.New("index s out of bounds")
 	}
@@ -224,9 +263,9 @@ func Sign(m [32]byte, ring []*ecdsa.PublicKey, privkey *ecdsa.PrivateKey, s int)
 	sig.Curve = curve
 
 	// check that key at index s is indeed the signer
-	if ring[s] != pubkey {
-		return nil, errors.New("secret index in ring is not signer")
-	}
+	//if ring[s] != pubkey {
+	//	return nil, errors.New("secret index in ring is not signer")
+	//}
 
 	// generate key image
 	image := GenKeyImage(privkey)
