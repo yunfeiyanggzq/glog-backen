@@ -22,9 +22,8 @@ func TestAESError(t *testing.T) {
 	encoded, _ := Encrypt(priv1, []byte(input))
 	priv2, _ := crypto.GenerateKey()
 	decoded, err := Decry(priv2, encoded)
-	if err == nil {
-		t.Error("aes加解密算法错误")
-	} else {
+	if err != nil {
+		t.Error("私钥错误，解密失败,符合预期")
 		fmt.Println("私钥错误，解密失败,符合预期")
 	}
 	fmt.Println(string(decoded))
