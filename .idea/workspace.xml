@@ -19,7 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9654207a-27f1-4bb9-bb69-6d2ab5c8581b" name="Default Changelist" comment="" />
+    <list default="true" id="9654207a-27f1-4bb9-bb69-6d2ab5c8581b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/utils/util.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vote/file.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vote/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/user.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vote/topic.go" beforeDir="false" afterPath="$PROJECT_DIR$/vote/topic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vote/topic_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/vote/topic_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vote/voter.go" beforeDir="false" afterPath="$PROJECT_DIR$/vote/voter.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,19 +64,23 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/vote" />
-      <recent name="$PROJECT_DIR$/ring_signature" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/ci" />
       <recent name="$PROJECT_DIR$/vote" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/vote" />
+      <recent name="$PROJECT_DIR$/utils" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/ci" />
+      <recent name="$PROJECT_DIR$/ring_signature" />
+    </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build check_file.go">
+  <component name="RunManager" selected="Go Build.go build main.go">
     <configuration name="go build check_file.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="ring-go" />
       <working_directory value="$PROJECT_DIR$" />
@@ -82,7 +98,25 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestVoteFromFile in github.com/noot/ring-go/vote" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="go build github.com/noot/ring-go/main" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ring-go" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/main/main.go" />
+      <package value="github.com/noot/ring-go/main" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ring-go" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/main/main.go" />
+      <package value="github.com/noot/ring-go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestVote in github.com/noot/ring-go/vote" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="ring-go" />
       <working_directory value="$PROJECT_DIR$/vote" />
       <framework value="gotest" />
@@ -90,34 +124,16 @@
       <package value="github.com/noot/ring-go/vote" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestVoteFromFile\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go test cryptography" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="ring-go" />
-      <working_directory value="$PROJECT_DIR$/cryptography" />
-      <framework value="gotest" />
-      <kind value="DIRECTORY" />
-      <directory value="$PROJECT_DIR$/cryptography" />
-      <filePath value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go test vote" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="ring-go" />
-      <working_directory value="$PROJECT_DIR$/vote" />
-      <framework value="gotest" />
-      <kind value="DIRECTORY" />
-      <directory value="$PROJECT_DIR$/vote" />
-      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestVote\E$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build main.go" />
+        <item itemvalue="Go Test.TestVote in github.com/noot/ring-go/vote" />
+        <item itemvalue="Go Build.go build github.com/noot/ring-go/main" />
         <item itemvalue="Go Build.go build check_file.go" />
         <item itemvalue="Go Build.go build github.com/noot/ring-go/ci" />
-        <item itemvalue="Go Test.TestVoteFromFile in github.com/noot/ring-go/vote" />
-        <item itemvalue="Go Test.go test vote" />
-        <item itemvalue="Go Test.go test cryptography" />
       </list>
     </recent_temporary>
   </component>
@@ -141,54 +157,74 @@
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="639" y="369" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1625668492012">
+    <state x="639" y="369" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1626090839816">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="639" y="369" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1792.1120@0.0.1792.1120" timestamp="1625668492012" />
-    <state width="1750" height="285" key="GridCell.Tab.0.bottom" timestamp="1625744331273">
-      <screen x="-1920" y="0" width="1920" height="1080" />
+    <state x="639" y="369" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1792.1120@0.0.1792.1120" timestamp="1626090839816" />
+    <state x="100" y="100" width="1592" height="920" key="DiffContextDialog" timestamp="1626088652512">
+      <screen x="0" y="23" width="1792" height="1036" />
     </state>
-    <state width="1750" height="285" key="GridCell.Tab.0.bottom/-1920.0.1920.1080/0.0.1792.1120@-1920.0.1920.1080" timestamp="1625744331273" />
-    <state width="1750" height="285" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1625668160170" />
+    <state x="100" y="100" width="1592" height="920" key="DiffContextDialog/0.23.1792.1036@0.23.1792.1036" timestamp="1626088652512" />
+    <state width="1750" height="593" key="GridCell.Tab.0.bottom" timestamp="1626241677006">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="1878" height="379" key="GridCell.Tab.0.bottom/-1920.0.1920.1080/0.0.1792.1120@-1920.0.1920.1080" timestamp="1626011807834" />
+    <state width="1750" height="593" key="GridCell.Tab.0.bottom/-1920.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1626241677006" />
+    <state width="1750" height="422" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1626229178990" />
     <state width="1750" height="457" key="GridCell.Tab.0.bottom/0.23.1792.1031@0.23.1792.1031" timestamp="1625665042652" />
     <state width="1750" height="186" key="GridCell.Tab.0.bottom/0.23.1792.1033@0.23.1792.1033" timestamp="1625665239400" />
-    <state width="1750" height="285" key="GridCell.Tab.0.center" timestamp="1625744331269">
-      <screen x="-1920" y="0" width="1920" height="1080" />
+    <state width="1750" height="358" key="GridCell.Tab.0.bottom/0.23.1792.1036@0.23.1792.1036" timestamp="1626167396405" />
+    <state width="1750" height="593" key="GridCell.Tab.0.center" timestamp="1626241676997">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="285" key="GridCell.Tab.0.center/-1920.0.1920.1080/0.0.1792.1120@-1920.0.1920.1080" timestamp="1625744331269" />
-    <state width="1750" height="285" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1625668160168" />
+    <state width="1878" height="379" key="GridCell.Tab.0.center/-1920.0.1920.1080/0.0.1792.1120@-1920.0.1920.1080" timestamp="1626011807832" />
+    <state width="1750" height="593" key="GridCell.Tab.0.center/-1920.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1626241676997" />
+    <state width="1750" height="422" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1626229178989" />
     <state width="1750" height="457" key="GridCell.Tab.0.center/0.23.1792.1031@0.23.1792.1031" timestamp="1625665042651" />
     <state width="1750" height="186" key="GridCell.Tab.0.center/0.23.1792.1033@0.23.1792.1033" timestamp="1625665239399" />
-    <state width="1750" height="285" key="GridCell.Tab.0.left" timestamp="1625744331268">
-      <screen x="-1920" y="0" width="1920" height="1080" />
+    <state width="1750" height="358" key="GridCell.Tab.0.center/0.23.1792.1036@0.23.1792.1036" timestamp="1626167396404" />
+    <state width="1750" height="593" key="GridCell.Tab.0.left" timestamp="1626241676997">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="285" key="GridCell.Tab.0.left/-1920.0.1920.1080/0.0.1792.1120@-1920.0.1920.1080" timestamp="1625744331268" />
-    <state width="1750" height="285" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1625668160167" />
+    <state width="1878" height="379" key="GridCell.Tab.0.left/-1920.0.1920.1080/0.0.1792.1120@-1920.0.1920.1080" timestamp="1626011807831" />
+    <state width="1750" height="593" key="GridCell.Tab.0.left/-1920.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1626241676997" />
+    <state width="1750" height="422" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1626229178987" />
     <state width="1750" height="457" key="GridCell.Tab.0.left/0.23.1792.1031@0.23.1792.1031" timestamp="1625665042651" />
     <state width="1750" height="186" key="GridCell.Tab.0.left/0.23.1792.1033@0.23.1792.1033" timestamp="1625665239394" />
-    <state width="1750" height="285" key="GridCell.Tab.0.right" timestamp="1625744331270">
-      <screen x="-1920" y="0" width="1920" height="1080" />
+    <state width="1750" height="358" key="GridCell.Tab.0.left/0.23.1792.1036@0.23.1792.1036" timestamp="1626167396403" />
+    <state width="1750" height="593" key="GridCell.Tab.0.right" timestamp="1626241677005">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="285" key="GridCell.Tab.0.right/-1920.0.1920.1080/0.0.1792.1120@-1920.0.1920.1080" timestamp="1625744331270" />
-    <state width="1750" height="285" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1625668160169" />
+    <state width="1878" height="379" key="GridCell.Tab.0.right/-1920.0.1920.1080/0.0.1792.1120@-1920.0.1920.1080" timestamp="1626011807833" />
+    <state width="1750" height="593" key="GridCell.Tab.0.right/-1920.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1626241677005" />
+    <state width="1750" height="422" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1626229178989" />
     <state width="1750" height="457" key="GridCell.Tab.0.right/0.23.1792.1031@0.23.1792.1031" timestamp="1625665042652" />
     <state width="1750" height="186" key="GridCell.Tab.0.right/0.23.1792.1033@0.23.1792.1033" timestamp="1625665239400" />
-    <state width="1750" height="388" key="GridCell.Tab.1.bottom" timestamp="1625237405084">
+    <state width="1750" height="358" key="GridCell.Tab.0.right/0.23.1792.1036@0.23.1792.1036" timestamp="1626167396404" />
+    <state width="1750" height="435" key="GridCell.Tab.1.bottom" timestamp="1626087689897">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="388" key="GridCell.Tab.1.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1625237405084" />
-    <state width="1750" height="388" key="GridCell.Tab.1.center" timestamp="1625237405083">
+    <state width="1750" height="435" key="GridCell.Tab.1.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1626087689897" />
+    <state width="1750" height="435" key="GridCell.Tab.1.center" timestamp="1626087689896">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="388" key="GridCell.Tab.1.center/0.0.1792.1120@0.0.1792.1120" timestamp="1625237405083" />
-    <state width="1750" height="388" key="GridCell.Tab.1.left" timestamp="1625237405083">
+    <state width="1750" height="435" key="GridCell.Tab.1.center/0.0.1792.1120@0.0.1792.1120" timestamp="1626087689896" />
+    <state width="1750" height="435" key="GridCell.Tab.1.left" timestamp="1626087689895">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="388" key="GridCell.Tab.1.left/0.0.1792.1120@0.0.1792.1120" timestamp="1625237405083" />
-    <state width="1750" height="388" key="GridCell.Tab.1.right" timestamp="1625237405084">
+    <state width="1750" height="435" key="GridCell.Tab.1.left/0.0.1792.1120@0.0.1792.1120" timestamp="1626087689895" />
+    <state width="1750" height="435" key="GridCell.Tab.1.right" timestamp="1626087689896">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="388" key="GridCell.Tab.1.right/0.0.1792.1120@0.0.1792.1120" timestamp="1625237405084" />
+    <state width="1750" height="435" key="GridCell.Tab.1.right/0.0.1792.1120@0.0.1792.1120" timestamp="1626087689896" />
+    <state x="397" y="199" key="SettingsEditor" timestamp="1626087252641">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="397" y="199" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1626087252641" />
+    <state width="500" height="445" key="SwitcherDM" timestamp="1626093738013">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="500" height="445" key="SwitcherDM/0.0.1792.1120@0.0.1792.1120" timestamp="1626093738013" />
     <state x="594" y="315" width="604" height="490" key="find.popup" timestamp="1625374633638">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
@@ -207,9 +243,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/cryptography/ring.go</url>
-          <line>245</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/vote/topic.go</url>
+          <line>89</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
