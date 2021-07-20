@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/noot/ring-go/cryptography"
+	util "github.com/noot/ring-go/utils"
 	"golang.org/x/crypto/sha3"
 )
 
@@ -87,10 +88,10 @@ func (topic *Topic) VerifyRingSignature(ringSignature *cryptography.RingSign) (s
 	return cryptography.Verify(ringSignature), nil
 }
 
-func (topic *Topic) CaliVoterSignature(walletPubKey *ecdsa.PublicKey, walletSignature *cryptography.Signature, voterPrivateKeyBytes []byte, cryptText []byte) error {
+func (topic *Topic) CaliVoterSignature(walletPubKey *ecdsa.PublicKey, walletSignature *cryptography.Signature, voterPrivateKeyBytes []byte, cryptText []byte) (voterAddress string, voterContent string, err error) {
 	res := cryptography.EcdsaVerify(walletPubKey, voterPrivateKeyBytes, walletSignature)
 	if !res {
-		return errors.New("投票人签名验证不通过，无法添加到环签名列表")
+		return "", "", errors.New("投票人签名验证不通过，无法添加到环签名列表")
 	}
 	votePrivateKey, _ := crypto.ToECDSA(voterPrivateKeyBytes)
 	x, y := crypto.S256().ScalarBaseMult(votePrivateKey.D.Bytes())
@@ -100,14 +101,14 @@ func (topic *Topic) CaliVoterSignature(walletPubKey *ecdsa.PublicKey, walletSign
 			fmt.Sprintf("%v", k.Y) == fmt.Sprintf("%v", walletPubKey.Y) {
 			if fmt.Sprintf("%v", v.X) == fmt.Sprintf("%v", x) &&
 				fmt.Sprintf("%v", v.Y) == fmt.Sprintf("%v", y) {
-				fmt.Printf("由钱包公钥为 %v的用户发起的投票\n", walletPubKey)
 				flag = true
+				voterAddress = util.GetMD5(x.Bytes())
 			}
 		}
 	}
 
 	if !flag {
-		return errors.New("该用户不在投票人列表中")
+		return "", "", errors.New("该用户不在投票人列表中")
 	}
 
 	index := -1
@@ -119,13 +120,13 @@ func (topic *Topic) CaliVoterSignature(walletPubKey *ecdsa.PublicKey, walletSign
 	}
 
 	if index == -1 {
-		return errors.New("该用户公钥不再环中")
+		return "", "", errors.New("该用户公钥不再环中")
 	}
 
 	msgHash := sha3.Sum256(cryptText)
 	ringSignature, err := cryptography.Sign(msgHash, topic.Ring, votePrivateKey, index)
 	if err != nil {
-		return errors.New("重构签名过程失败")
+		return "", "", errors.New("重构签名过程失败")
 	}
 
 	linkFlag := false
@@ -135,18 +136,18 @@ func (topic *Topic) CaliVoterSignature(walletPubKey *ecdsa.PublicKey, walletSign
 			if fmt.Sprintf("%v", msgHash) == fmt.Sprintf("%v", k.M) {
 				decry, err := cryptography.Decry(votePrivateKey, cryptText)
 				if err != nil {
-					return errors.New("解密投票内容失败")
+					return "", "", errors.New("解密投票内容失败")
 				}
-				fmt.Printf("解密后的秘文%s\n", string(decry))
-				return nil
+				voterContent = string(decry)
+				return voterAddress, voterContent, nil
 			} else {
-				return errors.New("投票密文被更换")
+				return "", "", errors.New("投票密文被更换")
 			}
 		}
 	}
 	if !linkFlag {
-		return errors.New("用户在投票阶段未投票")
+		return "", "", errors.New("用户在投票阶段未投票")
 	}
 
-	return errors.New("计算投票结果失败，原因由用户引起")
+	return "", "", errors.New("计算投票结果失败，原因由用户引起")
 }

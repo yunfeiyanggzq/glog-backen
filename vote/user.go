@@ -17,6 +17,8 @@ type User struct {
 	Image         interface{}       `json:"image"`
 	Introduction  string            `json:"introduction"`
 	FileMap       map[string]*File  `json:"fileMap"`
+	Balance       int               `json:"balance"`
 }
 
 var UserMap = make(map[string]*User)
+var VerifyMiner = make(map[string]*User)

@@ -8,7 +8,6 @@ import (
 	util "github.com/noot/ring-go/utils"
 	"github.com/noot/ring-go/vote"
 	"io"
-	"log"
 	"net/http"
 	"os"
 )
@@ -128,8 +127,13 @@ func UploadFileInfo(writer http.ResponseWriter, request *http.Request) {
 		return
 	}
 
+	file.CiVoteTopic = &vote.Topic{
+		TopicName: file.Name,
+	}
+	file.CloseVoteTopic = &vote.Topic{
+		TopicName: file.Name,
+	}
 	vote.FileMap[file.Name] = file
-
 	result.Code = 200
 	result.Message = "success"
 }
@@ -156,14 +160,14 @@ func GetFileInfo(writer http.ResponseWriter, request *http.Request) {
 
 	result.Code = 200
 	result.Message = "success"
-	fileInfoBytes,err:= jsonProcessor.Marshal(fileInfo)
+	fileInfoBytes, err := jsonProcessor.Marshal(fileInfo)
 	if err != nil {
 		result.Code = 400
 		result.Message = "server go wrong"
 		return
 	}
 	fmt.Println(string(fileInfoBytes))
-	result.Object=string(fileInfoBytes)
+	result.Object = string(fileInfoBytes)
 }
 
 func SaveFile(w http.ResponseWriter, r *http.Request, fileType string) {
@@ -180,7 +184,7 @@ func SaveFile(w http.ResponseWriter, r *http.Request, fileType string) {
 			fmt.Println("接收文件异常: ", err)
 			return
 		}
-		filepath := fmt.Sprintf("./%s.%s", fileName, fileType)
+		filepath := fmt.Sprintf("../saveFilePlace/%s.%s", fileName, fileType)
 		if fileinfo_w != nil {
 			defer file.Close()
 			os.Remove(filepath)
@@ -207,17 +211,17 @@ func ResponseWithOrigin(w http.ResponseWriter, r *http.Request, code int) {
 	//w.Write(json)
 }
 
-func main() {
-	var err error
-	http.HandleFunc("/register", cors(Register))
-	http.HandleFunc("/getFileInfo", cors(GetFileInfo))
-	http.HandleFunc("/uploadImage", cors(UploadImage))
-	http.HandleFunc("/uploadFile", cors(UploadFile))
-	http.HandleFunc("/login", cors(Login))
-	http.HandleFunc("/uploadFileInfo", cors(UploadFileInfo))
-	fmt.Println("初始化handler成功")
-	err = http.ListenAndServe(":8080", nil)
-	if err != nil {
-		log.Fatal("err:", err)
-	}
-}
+//func main() {
+//	var err error
+//	http.HandleFunc("/register", cors(Register))
+//	http.HandleFunc("/getFileInfo", cors(GetFileInfo))
+//	http.HandleFunc("/uploadImage", cors(UploadImage))
+//	http.HandleFunc("/uploadFile", cors(UploadFile))
+//	http.HandleFunc("/login", cors(Login))
+//	http.HandleFunc("/uploadFileInfo", cors(UploadFileInfo))
+//	fmt.Println("初始化handler成功")
+//	err = http.ListenAndServe(":8080", nil)
+//	if err != nil {
+//		log.Fatal("err:", err)
+//	}
+//}
