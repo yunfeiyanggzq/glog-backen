@@ -15,13 +15,17 @@ import (
 	"os/exec"
 	"strings"
 	"sync"
+	"time"
 )
 
 const verifyFilePlacePrefix = "/Users/bytedance/code/ring-go/verifyFilePlace"
 const saveFilePlace = "/Users/bytedance/code/ring-go/saveFilePlace"
 const ciNum = 3
+const ensureWaitSecond = 100
+const caliWaitSecond = 100
+const finishWaitSecond = 100
 
-func generateMiner() error {
+func generateMinerMock() error {
 	for i := 0; i < 100; i++ {
 		user := &vote.User{}
 		sk, err := crypto.GenerateKey()
@@ -37,6 +41,27 @@ func generateMiner() error {
 	return nil
 }
 
+func generateUserMock() error {
+	for i := 0; i < 1000; i++ {
+		user := &vote.User{}
+		sk, err := crypto.GenerateKey()
+		if err != nil {
+			return err
+		}
+		user.Name = fmt.Sprintf("user%d", i)
+		user.Email = fmt.Sprintf("user%d@qq.com", i)
+		user.Phone = "18811228731"
+		user.Image = "default"
+		user.Introduction = ""
+		user.LoginPassword = fmt.Sprintf("user%d", i)
+		user.WalletSk = sk
+		user.Address = util.GetMD5(sk.X.Bytes())
+		user.Balance = 100
+		vote.UserMap[user.Name] = user
+	}
+	return nil
+}
+
 func randomChooseMiner() (users []*vote.User) {
 	for i := 0; i < 3; i++ {
 		users = append(users, vote.VerifyMiner[fmt.Sprintf("%d", mathRand.Intn(100))])
@@ -44,22 +69,19 @@ func randomChooseMiner() (users []*vote.User) {
 	return users
 }
 
-func generateUser(name string) *vote.User {
-	walletSk, err := crypto.GenerateKey()
-	if err != nil {
-		fmt.Printf("产生钱包密钥对错误,错误原因，err:%v\n", err)
-		return nil
+func randomChooseUser() (users []*vote.User) {
+	for i := 0; i < 10; i++ {
+		users = append(users, vote.UserMap[fmt.Sprintf("user%d", mathRand.Intn(1000))])
 	}
-	user := &vote.User{
-		Name:     name,
-		WalletSk: walletSk,
-	}
-	return user
+	return users
 }
 
 func generateVoter(user *vote.User, topic *vote.Topic) error {
 	voter := &vote.Voter{
 		Name: user.Name,
+	}
+	if _, ok := topic.VoterAddressMap[&user.WalletSk.PublicKey]; !ok {
+		return fmt.Errorf("该用户没有被选中参与投票")
 	}
 	voter.WalletSk = user.WalletSk
 	voterSk, err := voter.GenKey()
@@ -67,7 +89,6 @@ func generateVoter(user *vote.User, topic *vote.Topic) error {
 		return err
 	}
 	voter.VoterSk = voterSk
-	topic.AddAddressList(&voter.WalletSk.PublicKey)
 	votePublicKeyBytes := crypto.FromECDSAPub(&voter.VoterSk.PublicKey)
 	signature, err := cryptography.EcdsaSign(rand.Reader, voter.WalletSk, votePublicKeyBytes)
 	if err != nil {
@@ -141,12 +162,14 @@ func verifyFile(file *vote.File, user *vote.User, voteWaiter *sync.WaitGroup, ca
 	} else {
 		file.CiResult.VoteResultDetail[string(cryptText)] = oneTimeSignature
 	}
+	time.Sleep(time.Second * time.Duration(mathRand.Intn(10)))
 	voteWaiter.Done()
 	voteWaiter.Wait()
 	// 计票阶段
 	file.CiProgress = 2
 	fmt.Printf("userName:%s progress:%d\n", user.Name, file.CiProgress)
 	publishSignature, votePrivateKeyBytes, _ := user.Voter.PublishResult()
+	time.Sleep(time.Second * time.Duration(mathRand.Intn(10)))
 	caliVoteWaiter.Done()
 	caliVoteWaiter.Wait()
 	voterAddress, voterContent, err := file.CiVoteTopic.CaliVoterSignature(&user.Voter.WalletSk.PublicKey, publishSignature, votePrivateKeyBytes, cryptText)
@@ -154,52 +177,98 @@ func verifyFile(file *vote.File, user *vote.User, voteWaiter *sync.WaitGroup, ca
 		fmt.Println("计票错误")
 		return
 	}
+	file.CiProgress = 3
 	file.CiResult.CaliResultDetail[voterAddress] = voterContent
 	fmt.Printf("userName:%s progress:%d\n", user.Name, file.CiProgress)
+	time.Sleep(time.Second * time.Duration(mathRand.Intn(10)))
 	caliResultWaiter.Done()
 	caliResultWaiter.Wait()
-	file.CiProgress = 3
+	file.CiProgress = 4
 	fmt.Printf("userName:%s progress:%d\n", user.Name, file.CiProgress)
+	time.Sleep(time.Second * time.Duration(mathRand.Intn(10)))
 }
 
-func main() {
-	topic := &vote.Topic{
-		TopicName: "test",
+func StartCloseVoteByUser(file *vote.File) {
+	fmt.Println("开始封闭式投票流程！" + file.Name)
+	file.CloseVoteTopic = &vote.Topic{
+		TopicName: file.Name,
 	}
-	file := &vote.File{
-		Name:        "test",
-		CiVoteTopic: topic,
-		CiResult: &vote.VerifyResult{
-			VoteResultDetail: make(map[string]*cryptography.RingSign),
-			CaliResultDetail: make(map[string]string),
-		},
+	file.CloseCheckResult = &vote.VerifyResult{
+		VoteResultDetail: make(map[string]*cryptography.RingSign),
+		CaliResultDetail: make(map[string]string),
 	}
+	file.CloseVoteTopic.VoteStartTime = time.Now().Add(time.Second * ensureWaitSecond).Unix()
+	file.CloseVoteTopic.CaliVoteStartTime = time.Now().Add(time.Second * (caliWaitSecond + ensureWaitSecond)).Unix()
+	// 选择投票人
+	users := randomChooseUser()
+	fmt.Println(users)
+	for _, user := range users {
+		fmt.Println(user)
+		fmt.Println(file)
+		file.CloseVoteTopic.AddAddressList(&user.WalletSk.PublicKey)
+		fmt.Println("被选中参与投票的用户" + user.Name)
+	}
+	file.CloseVoteProgress = 1
+	fmt.Printf("fileName:%s close vote progress:%d\n", file.Name, file.CloseVoteProgress)
+	fmt.Println("请确认参与投票")
+	time.Sleep(time.Second * ensureWaitSecond)
+	file.CloseVoteProgress = 2
+	fmt.Printf("fileName:%s close vote progress:%d\n", file.Name, file.CloseVoteProgress)
+	fmt.Println("请投票")
+	time.Sleep(time.Second * caliWaitSecond)
+	file.CloseVoteProgress = 3
+	fmt.Printf("fileName:%s close vote progress:%d\n", file.Name, file.CloseVoteProgress)
+	fmt.Println("开始计票")
+	time.Sleep(time.Second * finishWaitSecond)
+	file.CloseVoteProgress = 4
+	fmt.Printf("fileName:%s close vote progress:%d\n", file.Name, file.CloseVoteProgress)
+	fmt.Println("投票结束")
 
-	user1 := generateUser("user1")
-	user2 := generateUser("user2")
-	user3 := generateUser("user3")
-	user4 := generateUser("user4")
-	generateVoter(user1, file.CiVoteTopic)
-	generateVoter(user2, file.CiVoteTopic)
-	generateVoter(user3, file.CiVoteTopic)
-	generateVoter(user4, file.CiVoteTopic)
+	// 如果通过
+	file.CloseVoteProgress = 5
+	fmt.Printf("fileName:%s close vote progress:%d\n", file.Name, file.CloseVoteProgress)
+	// 开始开放式投票
+	file.OpenCheckResult = &vote.VerifyResult{
+		CaliResultDetail: make(map[string]string),
+	}
+}
+
+func minerVerifyFiByCI(file *vote.File) {
+	file.CiVoteTopic = &vote.Topic{
+		TopicName: file.Name,
+	}
+	file.CiResult = &vote.VerifyResult{
+		VoteResultDetail: make(map[string]*cryptography.RingSign),
+		CaliResultDetail: make(map[string]string),
+	}
+	fmt.Println("开始CI验证" + file.Name)
+	miners := randomChooseMiner()
+	for _, miner := range miners {
+		file.CiVoteTopic.AddAddressList(&miner.WalletSk.PublicKey)
+		generateVoter(miner, file.CiVoteTopic)
+	}
 	voteWaiter := &sync.WaitGroup{}
-	voteWaiter.Add(ciNum)
+	voteWaiter.Add(len(miners))
 	caliVoteWaiter := &sync.WaitGroup{}
-	caliVoteWaiter.Add(ciNum)
+	caliVoteWaiter.Add(len(miners))
 	caliResultWaiter := &sync.WaitGroup{}
-	caliResultWaiter.Add(ciNum)
+	caliResultWaiter.Add(len(miners))
 	mainWaiter := &sync.WaitGroup{}
-	mainWaiter.Add(ciNum)
-	go verifyFile(file, user1, voteWaiter, caliVoteWaiter, caliResultWaiter, mainWaiter)
-	go verifyFile(file, user2, voteWaiter, caliVoteWaiter, caliResultWaiter, mainWaiter)
-	go verifyFile(file, user3, voteWaiter, caliVoteWaiter, caliResultWaiter, mainWaiter)
+	mainWaiter.Add(len(miners))
+	for _, miner := range miners {
+		go verifyFile(file, miner, voteWaiter, caliVoteWaiter, caliResultWaiter, mainWaiter)
+	}
 	mainWaiter.Wait()
 	file.CiResult.FinalResult = "success"
 	for _, v := range file.CiResult.CaliResultDetail {
 		if strings.Contains(v, "00失败00") {
 			file.CiResult.FinalResult = "failed"
+			fmt.Println("自动化测试验证结果为失败！，终止验证流程")
+			fmt.Println(v)
 			break
 		}
 	}
+	file.CloseVoteProgress = 5
+	fmt.Println(file.Name + "验证结束,开启封闭式投票流程")
+	go StartCloseVoteByUser(file)
 }

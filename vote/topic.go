@@ -11,20 +11,22 @@ import (
 )
 
 type Topic struct {
-	TopicName       string
-	Ring            []*ecdsa.PublicKey
-	ImageMap        map[string]string
-	VoterAddressMap map[*ecdsa.PublicKey]*ecdsa.PublicKey
-	CollectorSigMap map[*cryptography.RingSign][]byte
+	TopicName         string
+	Ring              []*ecdsa.PublicKey
+	ImageMap          map[string]string
+	VoterAddressMap   map[*ecdsa.PublicKey]*ecdsa.PublicKey
+	CollectorSigMap   map[*cryptography.RingSign][]byte
+	VoteStartTime     int64 `json:"voteStartTime"`
+	CaliVoteStartTime int64 `json:"caliVoteStartTime"`
 }
 
 var TopicMap = make(map[string]*Topic)
 
-func (topic *Topic) AddAddressList(address *ecdsa.PublicKey) {
+func (topic *Topic) AddAddressList(publicKey *ecdsa.PublicKey) {
 	if topic.VoterAddressMap == nil {
 		topic.VoterAddressMap = make(map[*ecdsa.PublicKey]*ecdsa.PublicKey, 0)
 	}
-	topic.VoterAddressMap[address] = nil
+	topic.VoterAddressMap[publicKey] = nil
 }
 
 func (topic *Topic) GetVoterAddressList() []*ecdsa.PublicKey {

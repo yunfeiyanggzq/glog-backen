@@ -1,8 +1,10 @@
 package util
 
 import (
+	"bytes"
 	"code.byted.org/gopkg/logs"
 	"crypto/md5"
+	"encoding/gob"
 	"encoding/hex"
 	"github.com/tidwall/sjson"
 )
@@ -41,4 +43,13 @@ func GetMD5(b[]byte) (result string) {
 	//4、数据格式化
 	result=hex.EncodeToString(res) //转换为string
 	return
+}
+
+func DeepCopyByGob(dst, src interface{}) error {
+	var buffer bytes.Buffer
+	if err := gob.NewEncoder(&buffer).Encode(src); err != nil {
+		return err
+	}
+
+	return gob.NewDecoder(&buffer).Decode(dst)
 }
