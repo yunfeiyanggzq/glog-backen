@@ -20,15 +20,106 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9654207a-27f1-4bb9-bb69-6d2ab5c8581b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/vote/vote.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/check.sh" beforeDir="false" afterPath="$PROJECT_DIR$/main/check.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/main" beforeDir="false" afterPath="$PROJECT_DIR$/main/main" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/verify.go" beforeDir="false" afterPath="$PROJECT_DIR$/main/verify.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveFilePlace/test.zip" beforeDir="false" afterPath="$PROJECT_DIR$/saveFilePlace/test.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/util.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/util.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/12.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/123.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/22222.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/312123.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/344234.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/4534.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/45345.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/555.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/asdasdasd.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/e.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/eqe.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/eqw.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/eqweq.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/eqweqeqe.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/ewqeqeq.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/fda.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/gilea.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/lll.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/myname.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/qe.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/qeqw.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/qeweq.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/qqq.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/qwe.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/qweq.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/qweqwe.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/rr.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/tert.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/test.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/wqewq.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveFilePlace/yy.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/0/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/0/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/0/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/0/test/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/11/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/11/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/11/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/11/test/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/21/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/21/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/21/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/21/test/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/28/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/28/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/28/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/28/test/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/47/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/47/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/47/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/47/test/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/57/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/57/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/57/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/57/test/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/62/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/62/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/62/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/62/test/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/81/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/81/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/81/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/81/test/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/87/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/87/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/87/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/87/test/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/89/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/89/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/89/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/89/test/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/94/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/94/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/94/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/94/test/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/test/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/user1/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/user1/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/user1/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/user1/test/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/user2/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/user2/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/user2/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/user2/test/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/user3/__MACOSX/._test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/user3/test/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/user3/test/print.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/verifyFilePlace/user3/test/test" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/vote/file.go" beforeDir="false" afterPath="$PROJECT_DIR$/vote/file.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vote/topic.go" beforeDir="false" afterPath="$PROJECT_DIR$/vote/topic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vote/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/vote/user.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,21 +171,22 @@
       <recent name="$PROJECT_DIR$/vote" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build github.com/noot/ring-go/main">
-    <configuration name="go build check_file.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="ring-go" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/ci/check_file.go" />
-      <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Go Build.go build github.com/noot/ring-go/verifyFilePlace/miner74/test">
     <configuration name="go build github.com/noot/ring-go/main" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="ring-go" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
       <filePath value="$PROJECT_DIR$/main/main.go" />
       <package value="github.com/noot/ring-go/main" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/noot/ring-go/verifyFilePlace/miner74/test" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ring-go" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/verifyFilePlace/miner74/test/print.go" />
+      <package value="github.com/noot/ring-go/verifyFilePlace/miner74/test" />
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
@@ -129,11 +221,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build github.com/noot/ring-go/verifyFilePlace/miner74/test" />
         <item itemvalue="Go Build.go build github.com/noot/ring-go/main" />
         <item itemvalue="Go Build.go build main.go" />
         <item itemvalue="Go Build.go build github.com/noot/ring-go/verifyFilePlace/test" />
         <item itemvalue="Go Test.TestVote in github.com/noot/ring-go/vote" />
-        <item itemvalue="Go Build.go build check_file.go" />
       </list>
     </recent_temporary>
   </component>
@@ -165,43 +257,51 @@
       <screen x="0" y="23" width="1792" height="1036" />
     </state>
     <state x="100" y="100" width="1592" height="920" key="DiffContextDialog/0.23.1792.1036@0.23.1792.1036" timestamp="1626088652512" />
-    <state width="1750" height="237" key="GridCell.Tab.0.bottom" timestamp="1626852830489">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state width="1750" height="234" key="GridCell.Tab.0.bottom" timestamp="1628389245723">
+      <screen x="0" y="23" width="1792" height="1036" />
     </state>
     <state width="1878" height="379" key="GridCell.Tab.0.bottom/-1920.0.1920.1080/0.0.1792.1120@-1920.0.1920.1080" timestamp="1626011807834" />
     <state width="1750" height="237" key="GridCell.Tab.0.bottom/-1920.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1626852830489" />
+    <state width="1750" height="234" key="GridCell.Tab.0.bottom/-1920.23.1920.1057/0.23.1792.1036@0.23.1792.1036" timestamp="1628389245723" />
     <state width="1878" height="284" key="GridCell.Tab.0.bottom/-1920.23.1920.1057/0.23.1792.1037@0.23.1792.1037" timestamp="1626255282696" />
     <state width="1750" height="502" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1626616883418" />
+    <state width="1750" height="234" key="GridCell.Tab.0.bottom/0.23.1792.1026@0.23.1792.1026" timestamp="1628072804263" />
     <state width="1750" height="457" key="GridCell.Tab.0.bottom/0.23.1792.1031@0.23.1792.1031" timestamp="1625665042652" />
     <state width="1750" height="186" key="GridCell.Tab.0.bottom/0.23.1792.1033@0.23.1792.1033" timestamp="1625665239400" />
     <state width="1750" height="358" key="GridCell.Tab.0.bottom/0.23.1792.1036@0.23.1792.1036" timestamp="1626167396405" />
-    <state width="1750" height="237" key="GridCell.Tab.0.center" timestamp="1626852830487">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state width="1750" height="234" key="GridCell.Tab.0.center" timestamp="1628389245722">
+      <screen x="0" y="23" width="1792" height="1036" />
     </state>
     <state width="1878" height="379" key="GridCell.Tab.0.center/-1920.0.1920.1080/0.0.1792.1120@-1920.0.1920.1080" timestamp="1626011807832" />
     <state width="1750" height="237" key="GridCell.Tab.0.center/-1920.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1626852830487" />
+    <state width="1750" height="234" key="GridCell.Tab.0.center/-1920.23.1920.1057/0.23.1792.1036@0.23.1792.1036" timestamp="1628389245722" />
     <state width="1878" height="284" key="GridCell.Tab.0.center/-1920.23.1920.1057/0.23.1792.1037@0.23.1792.1037" timestamp="1626255282695" />
     <state width="1750" height="502" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1626616883416" />
+    <state width="1750" height="234" key="GridCell.Tab.0.center/0.23.1792.1026@0.23.1792.1026" timestamp="1628072804263" />
     <state width="1750" height="457" key="GridCell.Tab.0.center/0.23.1792.1031@0.23.1792.1031" timestamp="1625665042651" />
     <state width="1750" height="186" key="GridCell.Tab.0.center/0.23.1792.1033@0.23.1792.1033" timestamp="1625665239399" />
     <state width="1750" height="358" key="GridCell.Tab.0.center/0.23.1792.1036@0.23.1792.1036" timestamp="1626167396404" />
-    <state width="1750" height="237" key="GridCell.Tab.0.left" timestamp="1626852830486">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state width="1750" height="234" key="GridCell.Tab.0.left" timestamp="1628389245722">
+      <screen x="0" y="23" width="1792" height="1036" />
     </state>
     <state width="1878" height="379" key="GridCell.Tab.0.left/-1920.0.1920.1080/0.0.1792.1120@-1920.0.1920.1080" timestamp="1626011807831" />
     <state width="1750" height="237" key="GridCell.Tab.0.left/-1920.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1626852830486" />
+    <state width="1750" height="234" key="GridCell.Tab.0.left/-1920.23.1920.1057/0.23.1792.1036@0.23.1792.1036" timestamp="1628389245722" />
     <state width="1878" height="284" key="GridCell.Tab.0.left/-1920.23.1920.1057/0.23.1792.1037@0.23.1792.1037" timestamp="1626255282694" />
     <state width="1750" height="502" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1626616883415" />
+    <state width="1750" height="234" key="GridCell.Tab.0.left/0.23.1792.1026@0.23.1792.1026" timestamp="1628072804262" />
     <state width="1750" height="457" key="GridCell.Tab.0.left/0.23.1792.1031@0.23.1792.1031" timestamp="1625665042651" />
     <state width="1750" height="186" key="GridCell.Tab.0.left/0.23.1792.1033@0.23.1792.1033" timestamp="1625665239394" />
     <state width="1750" height="358" key="GridCell.Tab.0.left/0.23.1792.1036@0.23.1792.1036" timestamp="1626167396403" />
-    <state width="1750" height="237" key="GridCell.Tab.0.right" timestamp="1626852830488">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state width="1750" height="234" key="GridCell.Tab.0.right" timestamp="1628389245723">
+      <screen x="0" y="23" width="1792" height="1036" />
     </state>
     <state width="1878" height="379" key="GridCell.Tab.0.right/-1920.0.1920.1080/0.0.1792.1120@-1920.0.1920.1080" timestamp="1626011807833" />
     <state width="1750" height="237" key="GridCell.Tab.0.right/-1920.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1626852830488" />
+    <state width="1750" height="234" key="GridCell.Tab.0.right/-1920.23.1920.1057/0.23.1792.1036@0.23.1792.1036" timestamp="1628389245723" />
     <state width="1878" height="284" key="GridCell.Tab.0.right/-1920.23.1920.1057/0.23.1792.1037@0.23.1792.1037" timestamp="1626255282695" />
     <state width="1750" height="502" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1626616883417" />
+    <state width="1750" height="234" key="GridCell.Tab.0.right/0.23.1792.1026@0.23.1792.1026" timestamp="1628072804263" />
     <state width="1750" height="457" key="GridCell.Tab.0.right/0.23.1792.1031@0.23.1792.1031" timestamp="1625665042652" />
     <state width="1750" height="186" key="GridCell.Tab.0.right/0.23.1792.1033@0.23.1792.1033" timestamp="1625665239400" />
     <state width="1750" height="358" key="GridCell.Tab.0.right/0.23.1792.1036@0.23.1792.1036" timestamp="1626167396404" />
@@ -233,11 +333,12 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="436" y="296" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1792.1120@0.0.1792.1120" timestamp="1626441467988" />
-    <state x="594" y="315" width="604" height="490" key="find.popup" timestamp="1626783903773">
+    <state x="594" y="315" width="604" height="490" key="find.popup" timestamp="1631604431193">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="594" y="315" width="604" height="490" key="find.popup/-1920.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1626783903773" />
-    <state x="594" y="315" width="604" height="490" key="find.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1625374633638" />
+    <state x="589" y="173" width="604" height="490" key="find.popup/-1920.0.1920.1080/0.0.1792.1120@0.0.1792.1120" timestamp="1627388877908" />
+    <state x="589" y="173" width="604" height="490" key="find.popup/-1920.23.1920.1057/0.0.1792.1120@0.0.1792.1120" timestamp="1627391063695" />
+    <state x="594" y="315" width="604" height="490" key="find.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1631604431193" />
     <state x="561" y="251" width="671" height="677" key="search.everywhere.popup" timestamp="1626939541418">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>

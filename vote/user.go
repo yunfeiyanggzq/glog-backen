@@ -18,6 +18,7 @@ type User struct {
 	Introduction  string            `json:"introduction"`
 	FileMap       map[string]*File  `json:"fileMap"`
 	Balance       int               `json:"balance"`
+	TokenDay      int               `json:"tokenDay"`
 }
 
 var UserMap = make(map[string]*User)

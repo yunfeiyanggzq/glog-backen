@@ -7,10 +7,13 @@ import (
 	jsonIterator "github.com/json-iterator/go"
 	util "github.com/noot/ring-go/utils"
 	"github.com/noot/ring-go/vote"
+	"github.com/tidwall/gjson"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -94,6 +97,9 @@ func Register(writer http.ResponseWriter, request *http.Request) {
 	}
 	user.WalletSk = sk
 	user.Address = util.GetMD5(sk.X.Bytes())
+	user.Balance = 10
+	user.TokenDay = 100
+	user.Reputation = 10
 	vote.UserMap[user.Name] = user
 
 	entity := []byte("{}")
@@ -107,6 +113,53 @@ func UploadImage(writer http.ResponseWriter, request *http.Request) {
 	SaveFile(writer, request, "png")
 }
 
+func DownloadFile(w http.ResponseWriter, r *http.Request) {
+	var result httpResponse
+	//defer func() {
+	//	_ = json.NewEncoder(w).Encode(result)
+	//}()
+
+	voteInfo := &vote.VoteInfo{}
+	err := json.NewDecoder(r.Body).Decode(voteInfo)
+	if err != nil {
+		result.Code = 400
+		fmt.Println(err)
+		return
+	}
+	userInfo, ok := vote.UserMap[voteInfo.UserName]
+	if !ok {
+		result.Code = 400
+		result.Message = "用户不存在，请注册"
+		return
+	}
+	fileInfo, ok := vote.FileMap[voteInfo.FileName]
+	if !ok {
+		result.Code = 400
+		result.Message = "文件不存在，请确认后文件名是否正确"
+		return
+	}
+	userInfo.Balance=userInfo.Balance-fileInfo.Value
+	filepath := fmt.Sprintf("../saveFilePlace/%s.zip", fileInfo.Name)
+	file, err := os.Open(filepath)
+	if err != nil {
+		result.Code = 400
+		result.Message = "文件不存在"
+		return
+	}
+	defer file.Close()
+	content, err := ioutil.ReadAll(file)
+	w.Header().Add("Content-Type", "application/octet-stream")
+	w.Header().Add("Content-Disposition", "attachment; filename=\""+fileInfo.Name+"\"")
+	if err != nil {
+		fmt.Println("Read File Err:", err.Error())
+	} else {
+		w.Write(content)
+	}
+	result.Code = 200
+	result.Message = "下载成功"
+
+}
+
 func UploadFile(writer http.ResponseWriter, request *http.Request) {
 	SaveFile(writer, request, "zip")
 }
@@ -116,7 +169,11 @@ func UploadFileInfo(writer http.ResponseWriter, request *http.Request) {
 		_ = json.NewEncoder(writer).Encode(result)
 	}()
 	file := &vote.File{
-		CreateTime: time.Now().Format(time.RFC1123),
+		CreateTime:                  time.Now().Format(time.RFC1123),
+		CiVoteUserNameList:          []string{},
+		CloseVoteUserNameList:       []string{},
+		CloseVoteRandomUserNameList: []string{},
+		CommentList:                 []string{},
 	}
 	err := json.NewDecoder(request.Body).Decode(file)
 	if err != nil {
@@ -130,7 +187,6 @@ func UploadFileInfo(writer http.ResponseWriter, request *http.Request) {
 		result.Message = "file name is exist,please change file name"
 		return
 	}
-
 	vote.FileMap[file.Name] = file
 	result.Code = 200
 	result.Message = "success"
@@ -143,7 +199,13 @@ func GetFileInfoList(writer http.ResponseWriter, request *http.Request) {
 	defer func() {
 		_ = json.NewEncoder(writer).Encode(result)
 	}()
-
+	userInfo := &vote.User{}
+	err := json.NewDecoder(request.Body).Decode(userInfo)
+	if err != nil {
+		result.Code = 400
+		result.Message = "decode request failed"
+		return
+	}
 	var fileInfoList []vote.FileExternal
 	for _, fileInfo := range vote.FileMap {
 		fileInfoCopy := vote.FileExternal{
@@ -156,12 +218,12 @@ func GetFileInfoList(writer http.ResponseWriter, request *http.Request) {
 			CloseVoteProgress: fileInfo.CloseVoteProgress,
 			CreateTime:        fileInfo.CreateTime,
 			ViewCount:         fileInfo.ViewCount,
+			OwnerUserName:     fileInfo.OwnerUserName,
+			Value:             fileInfo.Value,
 		}
 		fileInfoList = append(fileInfoList, fileInfoCopy)
-	}
 
-	result.Code = 200
-	result.Message = "success"
+	}
 
 	fileInfoBytes, err := json.Marshal(fileInfoList)
 	if err != nil {
@@ -170,7 +232,8 @@ func GetFileInfoList(writer http.ResponseWriter, request *http.Request) {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println(string(fileInfoBytes))
+	result.Code = 200
+	result.Message = "success"
 	result.Object = string(fileInfoBytes)
 }
 
@@ -198,25 +261,47 @@ func GetFileInfo(writer http.ResponseWriter, request *http.Request) {
 	result.Code = 200
 	result.Message = "success"
 	fileInfoCopy := &vote.FileExternal{
-		Name:              fileInfo.Name,
-		Introduction:      fileInfo.Introduction,
-		Usage:             fileInfo.Usage,
-		Extra:             fileInfo.Extra,
-		Install:           fileInfo.Install,
-		CiProgress:        fileInfo.CiProgress,
-		CloseVoteProgress: fileInfo.CloseVoteProgress,
-		CreateTime:        fileInfo.CreateTime,
-		ViewCount:         fileInfo.ViewCount,
+		Name:                        fileInfo.Name,
+		Introduction:                fileInfo.Introduction,
+		Usage:                       fileInfo.Usage,
+		Extra:                       fileInfo.Extra,
+		Install:                     fileInfo.Install,
+		CiProgress:                  fileInfo.CiProgress,
+		CloseVoteProgress:           fileInfo.CloseVoteProgress,
+		CreateTime:                  fileInfo.CreateTime,
+		ViewCount:                   fileInfo.ViewCount,
+		OwnerUserName:               fileInfo.OwnerUserName,
+		CiVoteUserNameList:          fileInfo.CiVoteUserNameList,
+		CloseVoteRandomUserNameList: fileInfo.CloseVoteRandomUserNameList,
+		CiVoteCommentList:           make(map[string]string),
+		CiVoteScoreList:             make(map[string]string),
+		CloseVoteCommentList:        make(map[string]string),
+		CloseVoteScoreList:          make(map[string]string),
+		CommentList:                 fileInfo.CommentList,
+		Value:                       fileInfo.Value,
 	}
-
+	if fileInfo.CiResult != nil {
+		for key, value := range fileInfo.CiResult.CaliResultDetail {
+			fileInfoCopy.CiVoteCommentList[key] = value
+			if strings.Contains(value, "00失败00") {
+				fileInfoCopy.CiVoteScoreList[key] = "-5"
+			} else {
+				fileInfoCopy.CiVoteScoreList[key] = "5"
+			}
+		}
+	}
+	if fileInfo.CloseCheckResult != nil {
+		for key, value := range fileInfo.CloseCheckResult.CaliResultDetail {
+			fileInfoCopy.CloseVoteCommentList[key] = gjson.Get(value, "comment").String()
+			fileInfoCopy.CloseVoteScoreList[key] = gjson.Get(value, "score").String()
+		}
+	}
 	fileInfoBytes, err := json.Marshal(fileInfoCopy)
 	if err != nil {
 		result.Code = 400
 		result.Message = "server go wrong"
-		fmt.Println(err)
 		return
 	}
-	fmt.Println(string(fileInfoBytes))
 	result.Object = string(fileInfoBytes)
 }
 
@@ -281,9 +366,48 @@ func CloseVoteEnsure(w http.ResponseWriter, r *http.Request) {
 		result.Message = fmt.Sprintf("生成voter失败 err:%v", err)
 		return
 	}
+	fileInfo.CloseVoteUserNameList = append(fileInfo.CloseVoteUserNameList, userInfo.Name)
 	result.Code = 200
 	result.Message = "确认投票成功"
 	fmt.Println("成功添加" + userInfo.Name + "到" + fileInfo.Name + "的封闭式投票环中")
+	return
+}
+
+func GetUserInfo(w http.ResponseWriter, r *http.Request) {
+	var result httpResponse
+	defer func() {
+		_ = json.NewEncoder(w).Encode(result)
+	}()
+	user := &vote.User{}
+	err := json.NewDecoder(r.Body).Decode(user)
+	if err != nil {
+		result.Code = 400
+		result.Message = "decode request failed"
+		return
+	}
+	userInfo, ok := vote.UserMap[user.Name]
+	if !ok {
+		result.Code = 400
+		result.Message = "用户不存在，请注册"
+		return
+	}
+
+	file, _ := os.Open(fmt.Sprintf("%s/%s.png", saveFilePlace, user.Name))
+	defer file.Close()
+	content := make([]byte, 512)
+	_, _ = file.Read(content)
+
+	w.Header().Set("Content-Type", http.DetectContentType(content))
+
+	result.Code = 200
+	result.Message = "success"
+	result.Object = &vote.User{
+		Name:         userInfo.Name,
+		Introduction: userInfo.Introduction,
+		Balance:      userInfo.Balance,
+		TokenDay:     userInfo.TokenDay,
+		Reputation:   userInfo.Reputation,
+	}
 	return
 }
 
@@ -325,6 +449,7 @@ func OpenVote(w http.ResponseWriter, r *http.Request) {
 	}
 	fileInfo.OpenCheckResult.CaliResultDetail[userInfo.Address] = string(contentBytes)
 	fmt.Println("结果：" + userInfo.Address + "：" + string(contentBytes))
+	addComment(fileInfo, fmt.Sprintf("该用户进行了投票，投票内容为:\n%s", string(contentBytes)), userInfo.Name)
 	result.Code = 200
 	result.Message = "投票成功"
 
@@ -374,7 +499,6 @@ func CloseVote(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// 投票阶段
-	fmt.Println(userInfo.Voter)
 	cryptText, oneTimeSignature, err := userInfo.Voter.Vote(string(contentBytes), fileInfo.CloseVoteTopic.GetRing())
 	if err != nil {
 		result.Code = 400
@@ -391,6 +515,7 @@ func CloseVote(w http.ResponseWriter, r *http.Request) {
 		fileInfo.CloseCheckResult.VoteResultDetail[string(cryptText)] = oneTimeSignature
 		result.Code = 200
 		result.Message = "投票成功，请耐心等待计票"
+		addComment(fileInfo, fmt.Sprintf("某位用户进行了投票"), "区块链账本")
 		return
 	}
 }
@@ -421,21 +546,15 @@ func PublishVoteSk(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//if time.Now().Unix() < fileInfo.CloseVoteTopic.CaliVoteStartTime {
-	//	result.Code = 400
-	//	result.Message = "未到计票阶段，请耐心等待"
-	//	return
-	//}
-
 	publishSignature, votePrivateKeyBytes, _ := userInfo.Voter.PublishResult()
-	voterAddress, voterContent, err := fileInfo.CloseVoteTopic.CaliVoterSignature(&userInfo.Voter.WalletSk.PublicKey, publishSignature, votePrivateKeyBytes, vote.VoteContentCryptMap[userInfo.Name])
+	_, voterContent, err := fileInfo.CloseVoteTopic.CaliVoterSignature(&userInfo.Voter.WalletSk.PublicKey, publishSignature, votePrivateKeyBytes, vote.VoteContentCryptMap[userInfo.Name])
 	if err != nil {
 		result.Code = 400
 		result.Message = fmt.Sprintf("计票错误。err:%v", err)
 		return
 	}
-	fileInfo.CloseCheckResult.CaliResultDetail[voterAddress] = voterContent
-	fmt.Println("结果：" + voterAddress + "：" + voterContent)
+	addComment(fileInfo, fmt.Sprintf("公布一次性投票密钥 %s 用于计算结果", userInfo.Voter.VoterSk.D.String()), userInfo.Name)
+	fileInfo.CloseCheckResult.CaliResultDetail[userInfo.Name] = voterContent
 	result.Code = 200
 	result.Message = "成功"
 }
@@ -464,9 +583,11 @@ func main() {
 	http.HandleFunc("/ensureVote", cors(CloseVoteEnsure))
 	http.HandleFunc("/register", cors(Register))
 	http.HandleFunc("/getFileInfo", cors(GetFileInfo))
+	http.HandleFunc("/getUserInfo", cors(GetUserInfo))
 	http.HandleFunc("/getFileInfoList", cors(GetFileInfoList))
 	http.HandleFunc("/uploadImage", cors(UploadImage))
 	http.HandleFunc("/uploadFile", cors(UploadFile))
+	http.HandleFunc("/downloadFile", cors(DownloadFile))
 	http.HandleFunc("/login", cors(Login))
 	http.HandleFunc("/uploadFileInfo", cors(UploadFileInfo))
 	fmt.Println("初始化handler成功")
